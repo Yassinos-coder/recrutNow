@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Back End Side",
+  "main": "index.js",
+  "author": "Yassinos-Coder",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.1"
+  }
+}
