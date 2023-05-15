@@ -1,0 +1,117 @@
+.productMain {
+  width: 100%;
+  height: 100vh;
+}
+
+.productOrderingBox {
+  position: relative;
+  margin: auto;
+  /* background-color: whitesmoke; */
+  max-width: 1000px;
+  max-height: 700px;
+  height: 600px;
+  top: 50px;
+}
+
+.ProductImageDisplay {
+  position: relative;
+  top: 100px;
+  left: -100px;
+}
+
+.ProductImageDisplay > img {
+  width: 600px;
+}
+
+.BuyerInfoInputs {
+  position: absolute;
+  left: 500px;
+  top: 50px;
+}
+
+.input {
+  display: block;
+  width: 410px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #9b9b9b;
+  font-size: 16px;
+  padding-left: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: #9b9b9b;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+    cursor:pointer;
+    color: #333;
+    position:relative;
+    width: 300px;
+    height: 25px;
+    left: -10px;
+}
+
+select {
+    display: block;
+    width: 410px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #9b9b9b;
+    font-size: 16px;
+    padding-left: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #9b9b9b;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+textarea {
+  display: block;
+  width: 410px;
+  height: 60px;
+  border-radius: 10px;
+  border: 1px solid #9b9b9b;
+  font-size: 16px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 3px;
+  margin-top: 10px;
+  color: #9b9b9b;
+}
+
+.input::placeholder {
+  color: #9b9b9b;
+  font-size: 15px;
+}
+
+label {
+  color: #9b9b9b;
+  font-weight: 500;
+  font-size: 19px;
+}
+
+.OrderInformation {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 30px;
+  top: 20px;
+}
+
+.orderinfoInput {
+  position: relative;
+  width: 100px;
+  margin-bottom: 50px;
+}
+
+.validationButton {
+    position: relative;
+    top: 200px;
+    left: 820px;
+}

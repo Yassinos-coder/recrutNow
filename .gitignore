@@ -1,2 +1,13 @@
+# Root
+todos.txt
+.vscode
+
+# Frontend
 frontend/node_modules
+frontend/yarn.lock
+
+
+# Backend
 backend/node_modules
+backend/.env
+backend/yarn.lock
