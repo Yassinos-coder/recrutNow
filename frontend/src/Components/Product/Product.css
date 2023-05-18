@@ -111,7 +111,8 @@ label {
 }
 
 .validationButton {
-    position: relative;
-    top: 200px;
-    left: 820px;
+  position: relative;
+  top: 200px;
+  left: 820px;
+  width: 111px;
 }
