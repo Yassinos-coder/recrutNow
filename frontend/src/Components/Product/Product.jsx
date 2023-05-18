@@ -2,10 +2,15 @@ import "./Product.css";
 import React, { useState } from "react";
 import pr1 from "../../assets/imgs/products/pr1.png";
 import Button from "../../StyledComponents/Button";
+import OrderClass from "../../ClassModals/OrderClass";
+import { useDispatch } from "react-redux";
+import { SubmitOrder } from "../../redux/OrdersReducer";
 
 const Product = () => {
   const [orderQTY, setOrderQTY] = useState();
   const [totalPrice, setTotalPrice] = useState();
+  const [newOrder, setNewOrder] = useState(new OrderClass());
+  const dispatch = useDispatch();
 
   const products = {
     pr1: {
@@ -18,20 +23,26 @@ const Product = () => {
   const handleQtyUpdate = (event) => {
     console.log(event, orderQTY, totalPrice);
     const price = 20;
-    const qty = parseInt(event.currentTarget.value); // Parse the quantity value to an integer
-
+    const qty = parseInt(event.currentTarget.value);
     if (!isNaN(qty)) {
-      // Check if the parsed quantity is a valid number
-      setOrderQTY(qty); // Update the order quantity
-
+      setOrderQTY(qty);
       if (qty > 0) {
-        setTotalPrice(qty * price); // Calculate and update the total price
+        setTotalPrice(qty * price);
       } else {
         setTotalPrice(0);
       }
     }
   };
-  const handleOrder = () => {};
+
+  const handleSelectProduct = (e) => {
+    let productName =
+      e.currentTarget.options[e.currentTarget.selectedIndex].text;
+    setNewOrder({ ...newOrder, product_name: productName });
+  };
+
+  const handleOrder = () => {
+    dispatch(SubmitOrder({ orderData: newOrder }));
+  };
 
   return (
     <>
@@ -42,7 +53,14 @@ const Product = () => {
           </div>
           <div className="BuyerInfoInputs">
             <label htmlFor="Product">Product</label>
-            <select name="Product" id="Product">
+            <select
+              name="Product"
+              id="Product"
+              onChange={(e) => {
+                handleSelectProduct(e);
+              }}
+            >
+              <option value='0'>Choose product from list</option>
               <option value={products.pr1.name}>{products.pr1.name}</option>
             </select>
             <div className="OrderInformation">
@@ -55,6 +73,10 @@ const Product = () => {
                   id="qty"
                   onChange={(event) => {
                     handleQtyUpdate(event);
+                    setNewOrder({
+                      ...newOrder,
+                      order_qty: event.currentTarget.value,
+                    });
                   }}
                 />
               </div>
@@ -86,6 +108,12 @@ const Product = () => {
               className="input"
               name="name"
               placeholder="EX: Sara Lamoudi"
+              onChange={(e) => {
+                setNewOrder({
+                  ...newOrder,
+                  orderer_name: e.currentTarget.value,
+                });
+              }}
             />
             <label htmlFor="Phone">Phone</label>
             <input
@@ -93,6 +121,12 @@ const Product = () => {
               className="input"
               name="Phone"
               placeholder="EX: 0654593277"
+              onChange={(e) => {
+                setNewOrder({
+                  ...newOrder,
+                  orderer_phonenumber: e.currentTarget.value,
+                });
+              }}
             />
             <label htmlFor="adress">Address</label>
             <textarea
@@ -100,6 +134,12 @@ const Product = () => {
               id="adress"
               placeholder="EX: 2, RUE AHMED EL MAJJATI, MAARIF"
               style={{ resize: "none" }}
+              onChange={(e) => {
+                setNewOrder({
+                  ...newOrder,
+                  shipping_address: e.currentTarget.value,
+                });
+              }}
             ></textarea>
           </div>
           <div className="validationButton">
