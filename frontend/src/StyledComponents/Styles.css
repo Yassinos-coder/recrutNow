@@ -1,19 +1,20 @@
 :root {
-    --green : #304c3e;
+  --green: #304c3e;
 }
 
 /* Button Styling */
 .btn {
-    background-color: var(--green);
-    color: white;
-    width: 110px;
-    height: 30px;
-    border: none;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
+  background-color: var(--green);
+  color: white;
+  width: 110px;
+  height: 30px;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .btn:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
+

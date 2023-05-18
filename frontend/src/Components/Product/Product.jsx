@@ -5,12 +5,16 @@ import Button from "../../StyledComponents/Button";
 import OrderClass from "../../ClassModals/OrderClass";
 import { useDispatch } from "react-redux";
 import { SubmitOrder } from "../../redux/OrdersReducer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBug, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Product = () => {
   const [orderQTY, setOrderQTY] = useState();
   const [totalPrice, setTotalPrice] = useState();
   const [newOrder, setNewOrder] = useState(new OrderClass());
   const dispatch = useDispatch();
+  const [orderSuccess, setorderSuccess] = useState(false);
+  const [orderfailed, setorderfailed] = useState(false);
 
   const products = {
     pr1: {
@@ -41,12 +45,41 @@ const Product = () => {
   };
 
   const handleOrder = () => {
-    dispatch(SubmitOrder({ orderData: newOrder }));
+    dispatch(SubmitOrder({ orderData: newOrder })).then((response) => {
+      if (response.payload.message === "orderSuccess") {
+        setorderSuccess(true);
+      } else if (response.payload.message === "ErrorInOrder") {
+        setorderfailed(true);
+      }
+    });
   };
 
   return (
     <>
       <div className="productMain">
+        <div
+          className="alertDIV"
+          style={orderSuccess || orderfailed ? { display: "block", backgroundColor: orderSuccess ? 'rgba(0, 128, 0, 0.4)' : 'rgba(255, 0, 0, 0.4)' } : { display: "none" }}
+        >
+          <p
+            className="alertp"
+            style={orderSuccess ? { display: "block" } : { display: "none" }}
+          >
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              color="green"
+              style={{ paddingRight: "5px" }}
+            />
+            Order Successfuly Submitted !
+          </p>
+          <p
+            className="alertp"
+            style={orderfailed ? { display: "block" } : { display: "none" }}
+          ><FontAwesomeIcon icon={faBug} color="red" style={{paddingRight: '5px'}}/>
+            Order Failed Please Try Again !
+          </p>
+        </div>
+
         <div className="productOrderingBox">
           <div className="ProductImageDisplay">
             <img src={products.pr1.image} alt="" />
@@ -60,7 +93,7 @@ const Product = () => {
                 handleSelectProduct(e);
               }}
             >
-              <option value='0'>Choose product from list</option>
+              <option value="0">Choose product from list</option>
               <option value={products.pr1.name}>{products.pr1.name}</option>
             </select>
             <div className="OrderInformation">
