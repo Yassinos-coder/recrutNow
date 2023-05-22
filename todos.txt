@@ -9,7 +9,7 @@ URL: https://www.figma.com/file/2zENByKieyh1TGgFcHU2Zj/Admin-dashboard-(Communit
     Les fonctionnalités attendues sont basées sur le design partagé via Figma, qui détaille toutes les fonctionnalités à implémenter.
     Le développement de la page doit être réalisé en utilisant React.js pour le frontend.
 
-# Création d'un panel admin :
-    Le panel admin doit permettre à l'administrateur de consulter toutes les commandes passées sur le site et de modifier les informations relatives à ces commandes.
+# Création d'un panel admin : (Done)
+    Le panel admin doit permettre à l'administrateur de consulter toutes les commandes passées sur le site.
     Les fonctionnalités attendues sont également fournies dans le design partagé via Figma.
     Le développement du panel admin doit être réalisé en utilisant React.js pour le backend.
